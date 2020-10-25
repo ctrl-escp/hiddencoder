@@ -1,0 +1,24 @@
+{
+  "name": "hiddencoder",
+  "version": "1.0.0",
+  "description": "Encode ASCII strings into zero-width unicode characters, and decode back into ASCII",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ctrl-escp/hiddencoder.git"
+  },
+  "keywords": [
+    "encode",
+    "decode",
+    "ASCII"
+  ],
+  "author": "Ben Baryo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ctrl-escp/hiddencoder/issues"
+  },
+  "homepage": "https://github.com/ctrl-escp/hiddencoder#readme"
+}
