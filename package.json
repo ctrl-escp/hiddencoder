@@ -1,6 +1,6 @@
 {
   "name": "hiddencoder",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Encode ASCII strings into zero-width unicode characters, and decode back into ASCII",
   "main": "index.js",
   "scripts": {
