@@ -12,10 +12,25 @@ A decode operation is also available.
 ```Javascript
 const {a2h, h2a} = require('hiddencoder');
 
-const hiddenString = a2h("Hidden message");
+const hiddenString = a2h("Hidden string");
 console.log(`Hidden: ${hiddenString}`);
-console.log(`Shown: ${h2a(hiddenString)}`);
+console.log(`Actual: ${h2a(hiddenString)}`);
 // Output:
 //   Hidden: 󠀇󠁀󠀵󠀵󠀶󠁅󠄳󠁄󠀶󠁐󠁐󠀲󠀸󠀶
-//   Shown: Hidden message
+//   Actual: Hidden message
 ```
+
+### Example usage:
+Use the [example files](examples/) to encode a file in order to hide its content:
+
+Encode the code in [`encode.js`](examples/encode.js) file by using it on itself
+```Bash
+node encode.js encode.js
+```
+This will save the encoded output into [`encode.js.enc`](examples/encode.js.enc), and will seem empty
+
+Decode the content back into readable form by using [`decoder.js`](examples/decoder.js)
+```Bash
+node decode.js encode.js.enc
+```
+This will save the decoded output into [`encode.js.enc.dec`](examples/encode.js.enc.dec)
