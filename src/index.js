@@ -7,12 +7,13 @@ const hidingChars = '%uDB40%uD';
 const initValue = 65;   // Use 65 ('A') to avoid having values > 100 or < -100
 const CODES = {};
 for (const c of alphabet) {
-    const charPoint = initValue - c.codePointAt(0);
-    let u = charPoint < 0 ? 'C' : 'D';
-    const val = '' + Math.abs(charPoint);
+    const charPoint = c.codePointAt(0);
+    const pointDiff = initValue - c.codePointAt(0);
+    let u = pointDiff < 0 ? 'C' : 'D';
+    const val = '' + Math.abs(pointDiff);
     u += (val.length < 2 ? '0' : '') + val
-    CODES[c] = unescape(u);
-    CODES[unescape(u)] = c;
+    CODES[charPoint] = unescape(u);
+    CODES[unescape(u)] = charPoint;
 }
 
 /**
@@ -22,7 +23,7 @@ for (const c of alphabet) {
 function a2h(inputAscii) {
     let output = '';
     for (const c of inputAscii) {
-        output += unescape(hidingChars + CODES[c]);
+        output += unescape(hidingChars + CODES[c.codePointAt(0)]);
     }
     return output
 }
@@ -36,7 +37,7 @@ function h2a(inputHidden) {
     const hiddenCode = escape(inputHidden).split(hidingChars);
     for (const c of hiddenCode) {
         if (!c) continue;
-        output += CODES[c];
+        output += String.fromCodePoint(CODES[c]);
     }
     return output;
 }
