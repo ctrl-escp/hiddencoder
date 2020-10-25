@@ -29,7 +29,7 @@ node encode.js encode.js
 ```
 This will save the encoded output into [`encode.js.enc`](example/encode.js.enc), and will seem empty
 
-Decode the content back into readable form by using [`decoder.js`](example/decoder.js)
+Decode the content back into readable form by using [`decode.js`](example/decode.js)
 ```Bash
 node decode.js encode.js.enc
 ```
