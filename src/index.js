@@ -2,7 +2,7 @@
     Hiddencoder
     Encode ASCII strings into zero-width unicode characters, and decode back into ASCII
 */
-const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890!@#$%^&*(),.`~-=?\\/<>;:[]{}"_+\n\r\t ' + "'";
+const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890!@#$%^&*(),.`~-=?\\/<>;:[]{}"_+|\n\r\t ' + "'";
 const hidingChars = '%uDB40%uD';
 const initValue = 65;   // Use 65 ('A') to avoid having values > 100 or < -100
 const CODES = {};
