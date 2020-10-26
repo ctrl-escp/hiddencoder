@@ -17,7 +17,7 @@ console.log(`Hidden: ${hiddenString}`);
 console.log(`Actual: ${h2a(hiddenString)}`);
 // Output:
 //   Hidden: 󠀇󠁀󠀵󠀵󠀶󠁅󠄳󠁄󠀶󠁐󠁐󠀲󠀸󠀶
-//   Actual: Hidden message
+//   Actual: Hidden string
 ```
 
 ### Example usage:
