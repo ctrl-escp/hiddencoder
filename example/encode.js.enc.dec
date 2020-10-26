@@ -2,7 +2,7 @@
  * Encode an ASCII file
  */
 
-const {a2h} = require('hiddencoder');
+const {a2h} = require('../src/index');
 const fs = require('fs');
 
 const inputFilename = process.argv[2];

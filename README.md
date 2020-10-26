@@ -1,11 +1,11 @@
 # Hiddencoder
-Encode ASCII strings into zero-width unicode characters, and decode back into ASCII
+Encode ASCII strings into zero-width unicode characters (hiddencoded), and decode back into ASCII
 
 ## Description
 A simple encode-decode tool.
-Got the idea from [@FakeUnicode](https://twitter.com/FakeUnicode)'s [tweet](https://twitter.com/FakeUnicode/status/882419542990831616).
+Got the idea from [@FakeUnicode](https://twitter.com/FakeUnicode)'s [tweet](https://twitter.com/FakeUnicode/status/882419542990831616), and the great breakdown on [Stefan Judis' blog post](https://www.stefanjudis.com/blog/hidden-messages-in-javascript-property-names/).
 
-This tool takes an ASCII string and encodes it into zero-width unicode characters, which won't show up when printing the unescaped string.
+This tool takes an ASCII string and encodes it into zero-width unicode characters, which won't show up when printing the unescaped string (a hiddencoded string).
 A decode operation is also available.
 
 ## Usage
@@ -16,7 +16,7 @@ const hiddenString = a2h("Hidden string");
 console.log(`Hidden: ${hiddenString}`);
 console.log(`Actual: ${h2a(hiddenString)}`);
 // Output:
-//   Hidden: 󠀇󠁀󠀵󠀵󠀶󠁅󠄳󠁄󠀶󠁐󠁐󠀲󠀸󠀶
+//   Hidden: 󠅈󠅩󠅤󠅤󠅥󠅮󠄠󠅳󠅴󠅲󠅩󠅮󠅧 <- It's right here, the empty character
 //   Actual: Hidden string
 ```
 

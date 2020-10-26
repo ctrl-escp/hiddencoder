@@ -2,7 +2,7 @@
  * Decode a file which was encoded with Hiddencoder
  */
 
-const {h2a} = require('hiddencoder');
+const {h2a} = require('../src/index');
 const fs = require('fs');
 
 const inputFilename = process.argv[2];
