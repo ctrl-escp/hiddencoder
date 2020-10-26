@@ -2,30 +2,16 @@
     Hiddencoder
     Encode ASCII strings into zero-width unicode characters, and decode back into ASCII
 */
-const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890!@#$%^&*(),.`~-=?\\/<>;:[]{}"_+|\n\r\t ' + "'";
-const hidingChars = '%uDB40%uD';
-const initValue = 65;   // Use 65 ('A') to avoid having values > 100 or < -100
-const CODES = {};
-for (const c of alphabet) {
-    const charPoint = c.codePointAt(0);
-    const pointDiff = initValue - c.codePointAt(0);
-    let u = pointDiff < 0 ? 'C' : 'D';
-    const val = '' + Math.abs(pointDiff);
-    u += (val.length < 2 ? '0' : '') + val
-    CODES[charPoint] = unescape(u);
-    CODES[unescape(u)] = charPoint;
-}
+
+const unicodePrefix = '%uDB40%uDD';  // An invalid zero-width character followed by the beginning of a unicode for another zero-width character
 
 /**
  * Encode ASCII chars to hidden string
  * @param {string} inputAscii 
  */
 function a2h(inputAscii) {
-    let output = '';
-    for (const c of inputAscii) {
-        output += unescape(hidingChars + CODES[c.codePointAt(0)]);
-    }
-    return output
+    // Convert each char's code point to hex and append it to the unicodePrefix
+    return [...inputAscii].reduce((output, c) => output += (unescape(unicodePrefix + c.codePointAt(0).toString(16))), '');
 }
 
 /**
@@ -33,13 +19,8 @@ function a2h(inputAscii) {
  * @param {string} inputHidden 
  */
 function h2a(inputHidden) {
-    let output = '';
-    const hiddenCode = escape(inputHidden).split(hidingChars);
-    for (const c of hiddenCode) {
-        if (!c) continue;
-        output += String.fromCodePoint(CODES[c]);
-    }
-    return output;
+    // Skip the first item in the array since it'll be empty
+    return escape(inputHidden).split(unicodePrefix).slice(1).reduce((output, c) => output += (String.fromCodePoint(parseInt(c, 16))), '');
 }
 
 module.exports = {
