@@ -1,20 +1,23 @@
 /*
     Hiddencoder
-    Encode ASCII strings into zero-width unicode characters, and decode back into ASCII
+    Encode ASCII strings into zero-width unicode characters (hiddencoded), and decode back into ASCII
 */
 
 const unicodePrefix = '%uDB40%uDD';  // An invalid zero-width character followed by the beginning of a unicode for another zero-width character
 
 /**
+ * ASCII 2 Hiddencoded
  * Encode ASCII chars to hidden string
  * @param {string} inputAscii 
  */
 function a2h(inputAscii) {
     // Convert each char's code point to hex and append it to the unicodePrefix
-    return [...inputAscii].reduce((output, c) => output += (unescape(unicodePrefix + c.codePointAt(0).toString(16))), '');
+    // If the hex is smaller than 10, pad it with 0 on the left
+    return [...inputAscii].reduce((output, c) => output += (unescape(unicodePrefix + ('' + c.codePointAt(0).toString(16)).padStart(2, '0'))), '');
 }
 
 /**
+ * Hiddencoded 2 ASCII
  * Decode hidden strings back to ASCII
  * @param {string} inputHidden 
  */
