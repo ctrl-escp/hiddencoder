@@ -23,7 +23,7 @@ function a2h(inputAscii) {
  */
 function h2a(inputHidden) {
     // Skip the first item in the array since it'll be empty
-    return escape(inputHidden).split(unicodePrefix).slice(1).reduce((output, c) => output += (String.fromCodePoint(parseInt(c, 16))), '');
+    return escape(inputHidden).split(unicodePrefix).slice(1).reduce((output, c) => output += (String.fromCodePoint(parseInt(c.substr(0, 2), 16))), '');
 }
 
 module.exports = {
