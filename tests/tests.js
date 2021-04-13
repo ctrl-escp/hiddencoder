@@ -15,7 +15,7 @@ function test_encode_decode(originalString, coverString) {
     assert(originalString === hidenc.h2a(hiddencodedString), `The string ==>${hiddencodedString}<== was not decoded properly back to ${originalString}`);
 }
 
-const testsThisStrings = [
+const stringsToTest = [
     'Hello there', 
     '123456789.0',
     '123 number and characters 890',
@@ -29,9 +29,9 @@ const testsThisStrings = [
 
 console.log('Starting Hiddencoder tests...');
 console.time('All tests completed in');
-for (const hideThisString of testsThisStrings) {
+for (const hideThisString of stringsToTest) {
     process.stdout.write(`- Testing ${hideThisString}...'\n`);
-    for (const coverString of testsThisStrings) {
+    for (const coverString of stringsToTest) {
         console.time('PASS');
         process.stdout.write(`\twith ${coverString} ...`);
         test_encode_decode(hideThisString, coverString);
